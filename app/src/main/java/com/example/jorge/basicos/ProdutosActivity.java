@@ -117,11 +117,20 @@ public class ProdutosActivity extends Activity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 // ListView Clicked item value
                 ProdutosVO produto = (ProdutosVO) parent.getItemAtPosition(position);
+                ProdutosVO p = ProdutosVO.getInstance();
+
+                p.setFabricanteProduto(produto.getFabricanteProduto());
+                p.setDescricaoProduto(produto.getDescricaoProduto());
+                p.setIdProduto(produto.getIdProduto());
+                p.setImagemProduto(produto.getImagemProduto());
+                p.setNomeProduto(produto.getNomeProduto());
+                p.setPrecoProduto(produto.getPrecoProduto());
+                p.setQuantidadeProduto(produto.getQuantidadeProduto());
 
                 Toast.makeText(getApplicationContext(), "->"+String.valueOf(position) + "--"+produto.getNomeProduto(), Toast.LENGTH_LONG ).show();
 
                 Intent produtosIntent = new Intent(getApplicationContext(), DescricaoActivity.class);
-                produtosIntent.putExtra("produto_extra", produto);
+                produtosIntent.putExtra("produto_extra", "teste");
                 startActivity(produtosIntent);
 
             }

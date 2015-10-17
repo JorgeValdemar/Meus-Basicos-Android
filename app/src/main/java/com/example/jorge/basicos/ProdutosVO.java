@@ -6,7 +6,7 @@ import android.os.Parcelable;
 /**
  * Created by jorge on 29/09/2015.
  */
-public class ProdutosVO implements Parcelable {
+public class ProdutosVO {
     private int mData;
     private int idProduto;
     private String nomeProduto;
@@ -15,6 +15,16 @@ public class ProdutosVO implements Parcelable {
     private int precoProduto;
     private String fabricanteProduto;
     private int quantidadeProduto;
+
+    private static ProdutosVO _instance = null;
+
+    // maravilhoso singleton
+    public static ProdutosVO getInstance() {
+        if(_instance == null) {
+            _instance = new ProdutosVO();
+        }
+        return _instance;
+    }
 
     public ProdutosVO() {
     }
@@ -78,29 +88,6 @@ public class ProdutosVO implements Parcelable {
     public void setQuantidadeProduto(int quantidadeProduto) {
         this.quantidadeProduto = quantidadeProduto;
     }
-
-    @Override
-    public int describeContents() {
-        return 0;
-    }
-
-    @Override
-    public void writeToParcel(Parcel dest, int flags) {
-        dest.writeInt(mData);
-    }
-
-
-    public static final Parcelable.Creator CREATOR = new Parcelable.Creator() {
-
-        @Override
-        public Object createFromParcel(Parcel source) {
-            return new ProdutosVO(source);
-        }
-
-        public ProdutosVO[] newArray(int size) {
-            return new ProdutosVO[size];
-        }
-    };
 
 
 }

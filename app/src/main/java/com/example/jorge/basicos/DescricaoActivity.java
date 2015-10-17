@@ -10,16 +10,14 @@ import android.widget.TextView;
 
 public class DescricaoActivity extends Activity {
 
-
+    private ProdutosVO produto = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_descricao);
 
-
-        Intent i = getIntent();
-        ProdutosVO produto = (ProdutosVO) i.getParcelableExtra("produto_extra");
+        produto = ProdutosVO.getInstance();
 
         TextView nome = (TextView) findViewById(R.id.nomeTxt);
         TextView descr = (TextView) findViewById(R.id.descrTxt);
